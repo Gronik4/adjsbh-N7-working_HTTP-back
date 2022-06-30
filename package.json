@@ -1,0 +1,33 @@
+{
+  "name": "adjsbh-n7-working_http-back",
+  "version": "1.0.0",
+  "description": "The server part of the homework http",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "start": "forever server.js",
+    "watch": "forever -w server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gronik4/adjsbh-N7-working_HTTP-back.git"
+  },
+  "author": "Gronik4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gronik4/adjsbh-N7-working_HTTP-back/issues"
+  },
+  "homepage": "https://github.com/Gronik4/adjsbh-N7-working_HTTP-back#readme",
+  "dependencies": {
+    "forever": "^3.0.4",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-cors": "^0.0.16",
+    "koa-static": "^5.0.0",
+    "uuid": "^8.3.2"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
