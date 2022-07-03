@@ -25,7 +25,7 @@ app.use(async (ctx, next) =>{
       } catch (err) {console.error(err);}
       break;
     case 'POST':
-      if(!put.name || !put.status || !put.creat || !put.discription) {
+      if(!put.name || !put.check || !put.creat || !put.discription) {
         ctx.status = 400;
         ctx.error = 'Действие не возможно. Данных для записи не достаточно.';
         break;}
@@ -40,8 +40,9 @@ app.use(async (ctx, next) =>{
         ctx.status = 400;
         ctx.error = 'Действие не выполнено. Не достаточно данных для данной операции.';
         //ctx.response.body = 'Действие не выполнено.Такой задачи не существует.';
-        break;}
-      const {id, name, discription, status, creat, method} = put;
+        break;
+      }
+      const {id, name, discription, check, creat, method} = put;
       const chenge = save.tasks.find((item) => item.id === id);
       const index = save.tasks.findIndex((item) => item.id === id);
       if(index === -1) {
@@ -58,7 +59,7 @@ app.use(async (ctx, next) =>{
       }
       if(name) {chenge.name = name;}
       if(discription) {chenge.discription = discription;}
-      if(status) {chenge.status = status;}
+      if(check) {chenge.check = check;}
       if(creat) {chenge.creat = creat;}
       save.tasks.splice(index, 1, chenge);
       fs.writeFileSync('save.json', JSON.stringify(save, null, 2));
@@ -69,7 +70,7 @@ app.use(async (ctx, next) =>{
   await next();
 });
 
-const port = 8082;
+const port = 8080;
 http.createServer(app.callback()).listen(port, (err) => {
   if(err) {
     return console.log(`string18 ${err}.`)
