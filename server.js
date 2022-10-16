@@ -70,7 +70,7 @@ app.use(async (ctx, next) =>{
   await next();
 });
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 http.createServer(app.callback()).listen(port, (err) => {
   if(err) {
     return console.log(`string18 ${err}.`)
